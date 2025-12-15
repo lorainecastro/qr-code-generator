@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QR Code Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- QRCode.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #f6f8fa;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --text: #111;
+      --accent: #2563eb;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      width: 320px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.6rem;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    #qrcode {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>QR Code Generator</h1>
+
+    <input
+      type="text"
+      id="text"
+      placeholder="Enter text or URL"
+    />
+
+    <button onclick="generateQR()">Generate QR</button>
+
+    <div id="qrcode"></div>
+  </div>
+
+  <script>
+    let qr;
+
+    function generateQR() {
+      const text = document.getElementById("text").value.trim();
+      const qrContainer = document.getElementById("qrcode");
+
+      qrContainer.innerHTML = "";
+
+      if (!text) return;
+
+      qr = new QRCode(qrContainer, {
+        text: text,
+        width: 160,
+        height: 160,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+  </script>
+
+</body>
+</html>
