@@ -426,7 +426,7 @@
             // Clear previous QR
             qrContainer.innerHTML = '';
 
-            // Create new QR code (smaller size)
+            // Generate QR code for display (200x200)
             qrCodeInstance = new QRCode(qrContainer, {
                 text: text,
                 width: 200,
@@ -436,11 +436,27 @@
                 correctLevel: QRCode.CorrectLevel.H
             });
 
-            // Show download button after QR is generated
+            // Generate higher-quality version for download with extra padding
             setTimeout(() => {
-                const canvas = qrContainer.querySelector('canvas');
-                if (canvas) {
-                    downloadLink.href = canvas.toDataURL('image/png');
+                const displayCanvas = qrContainer.querySelector('canvas');
+                if (displayCanvas) {
+                    // Create a larger canvas for download
+                    const downloadCanvas = document.createElement('canvas');
+                    const size = 400; // QR code size
+                    const padding = 20; // Extra white padding (quiet zone ~20% of size)
+                    downloadCanvas.width = size + 2 * padding;
+                    downloadCanvas.height = size + 2 * padding;
+                    const ctx = downloadCanvas.getContext('2d');
+
+                    // White background
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, downloadCanvas.width, downloadCanvas.height);
+
+                    // Draw the QR code centered
+                    ctx.drawImage(displayCanvas, padding, padding, size, size);
+
+                    // Set download link
+                    downloadLink.href = downloadCanvas.toDataURL('image/png');
                     downloadLink.download = 'qrcode.png';
                     downloadLink.style.display = 'block';
                 }
