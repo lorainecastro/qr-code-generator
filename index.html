@@ -259,15 +259,16 @@
             transform: translateY(0);
         }
 
+        /* QR Code container - centered and smaller */
         #qrcode {
-            margin: 30px auto 0;
+            margin: 30px auto 20px;
             text-align: center;
             padding: 20px;
             background: #f9fafb;
             border-radius: 12px;
             border: 1px solid var(--border-color);
-            min-height: 100px;
             transition: var(--transition);
+            max-width: 240px; /* Limits the size */
         }
 
         #qrcode:hover {
@@ -279,6 +280,27 @@
             max-width: 100%;
             height: auto !important;
             border-radius: 8px;
+        }
+
+        /* Download button */
+        .download-btn {
+            display: block;
+            margin: 15px auto 0;
+            padding: 12px 24px;
+            background: var(--secondary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
+            width: fit-content;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(244, 63, 94, 0.35);
         }
 
         .notification {
@@ -366,6 +388,9 @@
             <button class="btn" type="submit">Generate QR Code</button>
 
             <div id="qrcode"></div>
+            <a id="downloadLink" class="download-btn" style="display:none;">
+                <i class="fas fa-download"></i> Download QR Code
+            </a>
         </form>
     </div>
 
@@ -376,6 +401,7 @@
     <script>
         const textInput = document.getElementById('text');
         const qrContainer = document.getElementById('qrcode');
+        const downloadLink = document.getElementById('downloadLink');
         const notification = document.getElementById('notification');
         let qrCodeInstance = null;
 
@@ -393,13 +419,14 @@
             if (!text) {
                 showNotification("Please enter some text or URL", "error");
                 qrContainer.innerHTML = '';
+                downloadLink.style.display = 'none';
                 return;
             }
 
             // Clear previous QR
             qrContainer.innerHTML = '';
 
-            // Create new QR code
+            // Create new QR code (smaller size)
             qrCodeInstance = new QRCode(qrContainer, {
                 text: text,
                 width: 200,
@@ -408,6 +435,16 @@
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
+
+            // Show download button after QR is generated
+            setTimeout(() => {
+                const canvas = qrContainer.querySelector('canvas');
+                if (canvas) {
+                    downloadLink.href = canvas.toDataURL('image/png');
+                    downloadLink.download = 'qrcode.png';
+                    downloadLink.style.display = 'block';
+                }
+            }, 100);
 
             showNotification("QR Code generated successfully!", "success");
         }
