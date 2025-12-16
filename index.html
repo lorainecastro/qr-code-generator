@@ -7,21 +7,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #10b981;
-            --primary-gradient: linear-gradient(135deg, #10b981, #059669);
-            --primary-hover: #059669;
+            /* Turquoise shades for primary */
+            --primary-color: #14b8a6;          /* teal-500 */
+            --primary-gradient: linear-gradient(135deg, #0891b2, #14b8a6); /* cyan-600 to teal-500 */
+            --primary-hover: #0891b2;
             --secondary-color: #f43f5e;
             --secondary-gradient: linear-gradient(135deg, #f43f5e, #ec4899);
             --error-color: #ef4444;
-            --success-color: #10b981;
-            --text-color: #1f2937;
-            --text-light: #6b7280;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --border-color: #e5e7eb;
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --success-color: #14b8a6;
+            --text-color: #f3f4f6;
+            --text-light: #9ca3af;
+            --bg-color: #101010;
+            --card-bg: #1a1a1a;
+            --border-color: #202020;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
             --transition: all 0.3s ease;
         }
 
@@ -44,17 +45,18 @@
             overflow-x: hidden;
         }
 
-        /* Decorative circles */
+        /* Decorative circles - darker and more subtle */
         .bg-circle {
             position: absolute;
             border-radius: 50%;
             z-index: -1;
+            opacity: 0.4;
         }
 
         .bg-circle-1 {
             width: 250px;
             height: 250px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15));
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(8, 145, 178, 0.15));
             top: -100px;
             right: 0px;
             animation: float 8s ease-in-out infinite;
@@ -63,7 +65,7 @@
         .bg-circle-2 {
             width: 200px;
             height: 200px;
-            background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(236, 72, 153, 0.12));
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.08), rgba(236, 72, 153, 0.08));
             bottom: 0px;
             left: 10%;
             animation: float 9s ease-in-out infinite 1s;
@@ -72,7 +74,7 @@
         .bg-circle-3 {
             width: 120px;
             height: 120px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(8, 145, 178, 0.1));
             top: 20%;
             left: -50px;
             animation: float 7s ease-in-out infinite 0.5s;
@@ -81,7 +83,7 @@
         .bg-circle-4 {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(8, 145, 178, 0.1));
             bottom: 30%;
             right: 5%;
             animation: float 10s ease-in-out infinite 1.5s;
@@ -92,13 +94,13 @@
             max-width: 500px;
             background: var(--card-bg);
             border-radius: 24px;
-            box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow-lg);
             padding: 48px 40px;
             position: relative;
             overflow: hidden;
             transition: var(--transition);
             z-index: 1;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
         }
 
         .container::before {
@@ -121,13 +123,13 @@
             right: 0;
             width: 150px;
             height: 150px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(8, 145, 178, 0.15));
             border-radius: 0 0 0 100%;
             z-index: -1;
         }
 
         .container:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.5);
         }
 
         .header {
@@ -145,7 +147,7 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 10px 20px rgba(20, 184, 166, 0.4);
             position: relative;
         }
 
@@ -157,7 +159,7 @@
             border-radius: 50%;
             background: var(--primary-gradient);
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.5;
             animation: pulse 2s infinite;
         }
 
@@ -199,15 +201,15 @@
             padding: 16px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
-            background: #f9fafb;
+            background: #111111;
             font-size: 16px;
-            color: #1a1a1a;
+            color: var(--text-color);
             transition: var(--transition);
         }
 
         .input-container input:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+            box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2);
             outline: none;
         }
 
@@ -226,7 +228,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 15px rgba(20, 184, 166, 0.4);
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -239,15 +241,13 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: var(--transition);
             z-index: -1;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.35);
-            background: var(--primary-hover);
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
         }
 
         .btn:hover::before {
@@ -259,7 +259,6 @@
             transform: translateY(0);
         }
 
-        /* QR Code container - centered and smaller */
         #qrcode {
             margin: 30px auto 20px;
             text-align: center;
@@ -294,13 +293,12 @@
             font-weight: 600;
             font-size: 15px;
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3);
             width: fit-content;
         }
 
         .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(244, 63, 94, 0.35);
+            box-shadow: 0 8px 20px rgba(244, 63, 94, 0.4);
         }
 
         .notification {
@@ -315,7 +313,7 @@
             transition: opacity 0.3s, transform 0.3s;
             z-index: 1000;
             transform: translateY(-20px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
         }
 
         .success {
