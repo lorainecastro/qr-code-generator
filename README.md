@@ -11,3 +11,9 @@ A beautiful, modern, and responsive QR Code Generator built with pure HTML, CSS,
 - **Notifications** — Success and error toasts for better user feedback.
 - **Responsive Layout** — Perfectly adapts to desktop and mobile screens
 - **High Error Correction** — Uses QRCode.js with High correction level for reliable scanning.
+
+## Libraries Used
+- **QRCode.js** – Lightweight QR code generation
+- **Font Awesome** – Icons for download button
+
+All loaded via CDN – no installation required.
