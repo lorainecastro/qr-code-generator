@@ -16,6 +16,6 @@ A beautiful, modern, and responsive QR Code Generator built with pure HTML, CSS,
 
 ## Libraries Used
 - [**QRCode.js**](https://github.com/davidshimjs/qrcodejs) – Lightweight QR code generation
-- **Font Awesome** – Icons for download button
+- [**Font Awesome**](https://fontawesome.com) – Icons for download button
 
 All loaded via CDN – no installation required.
