@@ -1,6 +1,6 @@
 # QR Code Generator
 
-A beautiful, modern, and responsive QR Code Generator built with pure HTML, CSS, and JavaScript. Enter any text, URL, or message to instantly generate a high-quality, scannable QR code with easy PNG download.
+A client-side QR Code Generator built entirely with pure HTML, CSS, and JavaScript. Enter any text, URL, or message to instantly generate a high-quality, scannable QR code with easy PNG download.
 
 [**Try the Live Demo**](https://lorainecastro.github.io/qr-code-generator/)
 
